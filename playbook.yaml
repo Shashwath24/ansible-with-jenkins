@@ -16,8 +16,8 @@
             command:
                     chdir: "{{ gitdir }}"
                     cmd: "mvn package"
-- name: "setup webs and deploy WAR"
-  hosts: webserver 
+- name: "setup web and deploy WAR"
+  hosts: web 
   become: true
   vars:
           gitdir: "/tmp/addressbook-project-1"
