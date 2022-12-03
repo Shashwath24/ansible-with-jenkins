@@ -1,4 +1,4 @@
-- name: "generate war file"
+ - name: "generate war file"
   hosts: local
   become: true
   vars:
@@ -16,8 +16,8 @@
             command:
                     chdir: "{{ gitdir }}"
                     cmd: "mvn package"
-- name: "setup web and deploy WAR"
-  hosts: web 
+- name: "setup webserver and deploy WAR"
+  hosts: webserver 
   become: true
   vars:
           gitdir: "/tmp/addressbook-project-1"
@@ -40,5 +40,4 @@
           - name: "restart tomcat service post deployment"
             service:
                     name: tomcat9
-                    state: restarted
-      
+                    state: restarted     
